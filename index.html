@@ -14,17 +14,20 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+
 
   <style>
-    body {
-      font-family: 'Quicksand', sans-serif;
-      background-color: #fff8f0;
-    }
+body {
+  font-family: 'Quicksand', 'ZCOOL KuaiLe', sans-serif;
+  background-color: #fff8f0;
+  color: #444;
+}
     .main-color {
-      color: #ff8b6a;
+      color:  #ff907a;
     }
     .accent {
-      background-color: #ffb085;
+      background-color: #ffb998;
     }
   </style>
 </head>
@@ -39,8 +42,8 @@
       </h1>
       <div class="hidden md:flex gap-6 text-gray-700 font-medium">
         <a href="#" id="nav-home" class="hover:text-orange-500">Home</a>
-        <a href="finance.html" id="nav-finance" class="hover:text-orange-500">Finance</a>
-        <a href="baby.html" id="nav-baby" class="hover:text-orange-500">Baby Growth</a>
+        <a href="./Financial Dashboard/family_ledger.html" id="nav-finance" class="hover:text-orange-500">Finance</a>
+        <a href="./100 days celebration/100_day_celebration.html" id="nav-baby" class="hover:text-orange-500">Baby Growth</a>
         <a href="travel.html" id="nav-travel" class="hover:text-orange-500">Family Travel</a>
         <a href="plans.html" id="nav-plans" class="hover:text-orange-500">Plans</a>
         <a href="memories.html" id="nav-memories" class="hover:text-orange-500">Memories</a>
@@ -65,13 +68,13 @@
   <main class="flex-1">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-6 pb-16">
       
-      <a href="finance.html" class="group bg-white p-6 rounded-2xl shadow hover:shadow-lg transition flex flex-col items-center">
+      <a href="./Financial Dashboard/family_ledger.html" class="group bg-white p-6 rounded-2xl shadow hover:shadow-lg transition flex flex-col items-center">
         <i data-lucide="wallet" class="w-10 h-10 main-color mb-3 group-hover:scale-110 transition"></i>
         <h3 id="card1-title" class="font-semibold text-lg mb-2 text-gray-800">Family Finance</h3>
         <p id="card1-text" class="text-sm text-gray-500 text-center">Track assets, investments, and expenses easily.</p>
       </a>
 
-      <a href="baby.html" class="group bg-white p-6 rounded-2xl shadow hover:shadow-lg transition flex flex-col items-center">
+      <a href="./100 days celebration/100_day_celebration.html" class="group bg-white p-6 rounded-2xl shadow hover:shadow-lg transition flex flex-col items-center">
         <i data-lucide="baby" class="w-10 h-10 main-color mb-3 group-hover:scale-110 transition"></i>
         <h3 id="card2-title" class="font-semibold text-lg mb-2 text-gray-800">Baby Growth</h3>
         <p id="card2-text" class="text-sm text-gray-500 text-center">Record every precious milestone and moment.</p>
@@ -147,21 +150,21 @@
         nav: ["Home", "Finance", "Baby Growth", "Family Travel", "Plans", "Memories"],
         lang: "中文"
       },
-      zh: {
-        title: "夏洛特之家",
-        welcomeTitle: "欢迎来到我们的家庭中心 ❤️",
-        welcomeText: "记录生活的温馨时刻——从微笑到远行，每一刻都值得珍藏。",
-        cards: [
-          ["家庭财务", "轻松管理资产、投资与支出。"],
-          ["宝宝成长", "记录宝宝的每一次成长与惊喜。"],
-          ["家庭旅行", "探索我们一起去过的地方与回忆。"],
-          ["家庭计划", "愿望清单、家庭目标与安排。"],
-          ["家庭纪念册", "照片、节日、故事，让回忆常新。"],
-          ["更多内容", "更多精彩内容，敬请期待。"]
-        ],
-        nav: ["首页", "财务", "宝宝成长", "家庭旅行", "家庭计划", "纪念册"],
-        lang: "EN"
-      }
+        zh: {
+            title: "夏洛特小家",
+            welcomeTitle: "欢迎来到我们的幸福小家 ❤️",
+            welcomeText: "这里记录着我们的笑声、旅行，还有那些温柔的小瞬间～",
+            cards: [
+                ["家庭财务", "一起打理小家的财富，心里更有底～"],
+                ["宝宝成长", "记录小宝贝的每一点变化，每一次惊喜！"],
+                ["家庭旅行", "收藏我们走过的足迹，分享旅途的欢笑。"],
+                ["家庭计划", "心愿清单、未来计划，都藏在这里～"],
+                ["家庭纪念册", "那些温暖的照片、故事和节日回忆。"],
+                ["更多内容", "更多幸福章节，敬请期待✨"]
+            ],
+            nav: ["首页", "财务", "宝宝成长", "家庭旅行", "计划", "纪念册"],
+            lang: "EN"
+        }
     };
 
     langBtn.addEventListener('click', () => {
