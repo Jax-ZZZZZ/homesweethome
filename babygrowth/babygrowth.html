@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baby Growth | Our Family Hub</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Bootstrap Carousel -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS for carousel -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', 'ZCOOL KuaiLe', sans-serif;
+  background-color: #fff8f0;
+  color: #444;
+      line-height: 1.6;
+    }
+    .main-color {
+      color:  #ff907a;
+    }
+    .accent {
+      background-color: #ffb998;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .carousel-caption h5,
+    .carousel-caption p {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.75); 
+    }
+
+  .carousel-caption h5 {
+    font-weight: 700;
+    }
+
+    /* 针对左右箭头按钮 */
+.carousel-control-prev,
+.carousel-control-next {
+    /* 增加一个半透明的黑色背景圆圈 */
+    background-color: rgba(0, 0, 0, 0.8); 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; /* 变成圆形 */
+    
+    /* 确保按钮垂直居中 */
+    top: 50%;
+    transform: translateY(-50%);
+    
+    /* 可选：增加阴影让它更立体 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* 针对箭头图标本身 */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    /* 增加图标尺寸 */
+    width: 1.5rem;
+    height: 1.5rem;
+    
+    /* 确保图标颜色是白色 (Bootstrap 默认通常是白色，这里是确保) */
+    background-color: transparent; 
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.8)); /* 给图标本身加一点阴影，让它更清晰 */
+}
+
+/* 调整左右按钮的位置，让它们更贴近边缘 */
+.carousel-control-prev {
+    left: 10px; /* 距离左边缘 10px */
+}
+.carousel-control-next {
+    right: 10px; /* 距离右边缘 10px */
+}
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .info {
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+  
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <!-- 顶部导航栏 -->
+  <header class="bg-white/80 backdrop-blur sticky top-0 z-10 shadow-sm">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center px-6 py-3">
+      <h1 class="text-2xl font-semibold main-color flex items-center gap-2">
+        <i data-lucide="heart" class="w-6 h-6"></i>
+        <a href="../index.html" id="site-title" class="hover:opacity-80 transition">
+  Our Family Hub
+</a>
+      </h1>
+      <div class="hidden md:flex gap-6 text-gray-700 font-medium">
+        <a href="../index.html" id="nav-home" class="hover:text-orange-500">Home</a>
+        <a href="../finance/family_ledger.html" id="nav-finance" class="hover:text-orange-500 font-semibold">Finance</a>
+        <a href="#" id="nav-baby" class="hover:text-orange-500">Baby Growth</a>
+        <a href="../familytravel/familytravel.html" id="nav-travel" class="hover:text-orange-500">Family Travel</a>
+        <a href="../plans/plans.html" id="nav-plans" class="hover:text-orange-500">Plans</a>
+        <a href="../memories/memories.html" id="nav-memories" class="hover:text-orange-500">Memories</a>
+      </div>
+      <button id="lang-btn" class="ml-4 px-3 py-1 rounded-lg accent text-white text-sm hover:opacity-90 transition">
+        中文
+      </button>
+    </nav>
+  </header>
+
+  <!-- 页面主标题 -->
+  <section class="text-center py-12 px-4 bg-gradient-to-b from-orange-50/70 to-transparent">
+    <h2 id="page-title" class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+      Charlotte's 100-Day Celebration 🎉
+    </h2>
+    <p id="page-text" class="text-gray-600 text-lg max-w-2xl mx-auto">
+      I'm Charlotte 🎀!  I earned the nicknames <strong>"Firecracker Baby" 💥</strong> and <strong>"Miss Liberty"</strong> because I was born on <strong>July 4th</strong> with fireworks and big sparkly sounds!
+    </p>
+  </section>
+
+<section>
+    <h2 style="text-align:center;">📸 Baby Milestones</h2>
+  <div class="container">
+    <div id="carouselExampleIndicators" class="carousel slide">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+          aria-label="Slide 4"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./photo/1stday.jpg" class="d-block w-100 h-auto" alt="1stday">
+          <div class="carousel-caption">
+        <h5>2 Days of Joy!</h5>
+        <p>Charlotte is resting in Dad's arms with pacifier.</p>
+      </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./photo/30thday.jpg" class="d-block w-100 h-auto" alt="30thday">
+          <div class="carousel-caption">
+        <h5>30 Days of Joy!</h5>
+        <p>Charlotte and her mom are lost in each other’s eyes.</p>
+      </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./photo/60thday.jpg" class="d-block w-100 h-auto" alt="60thday">
+          <div class="carousel-caption">
+        <h5>60 Days of Joy!</h5>
+        <p>Charlotte is lying on dad’s shoulder, making a funny face with her tongue.</p>
+      </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./photo/90thday.jpg" class="d-block w-100 h-auto" alt="90thday">
+          <div class="carousel-caption">
+        <h5>90 Days of Joy!</h5>
+        <p>Charlotte is sleeping in her mother’s arms while they are out for a walk. </p>
+      </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>  
+
+<section>
+    <h2 style="text-align:center;">📸 Baby Gallery</h2>
+    <div class="gallery">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby1.jpg">
+            <img src="./photo/baby1.jpg" alt="Listening Music">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby2.jpg">
+            <img src="./photo/baby2.jpg" alt="Little Princess">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby3.jpg">
+            <img src="./photo/baby3.jpg" alt="Sleeping Beauty">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby4.jpg">
+            <img src="./photo/baby4.jpg" alt="Reading Book">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby5.jpg">
+            <img src="./photo/baby5.jpg" alt="Happy Smile">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby6.jpg">
+            <img src="./photo/baby6.jpg" alt="After Shower">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby7.jpg">
+            <img src="./photo/baby7.jpg" alt="Curious Look">
+        </a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal" data-img-src="./photo/baby8.jpg">
+            <img src="./photo/baby8.jpg" alt="Tummy Time">
+        </a>
+    </div>
+</section>
+
+
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Baby Photo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="" id="modalImage" class="img-fluid" alt="Enlarged Photo">
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- 页脚 + 家庭成员 -->
+<footer class="bg-white/80 py-6 border-t">
+  <div class="max-w-6xl mx-auto px-4 mb-6">
+    <h3 class="text-center text-xl font-semibold mb-4">👨‍👩‍👧‍👦 Our Family</h3>
+
+    <!-- 响应式图片网格 -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 justify-items-center">
+      <div class="text-center">
+        <img src="./photo/family1.jpg" alt="Mom" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Mom</p>
+      </div>
+      <div class="text-center">
+        <img src="./photo/family2.jpg" alt="Dad" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Dad</p>
+      </div>
+      <div class="text-center">
+        <img src="./photo/family3.jpg" alt="Charlotte" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Charlotte</p>
+      </div>
+      <div class="text-center">
+        <img src="./photo/family4.jpg" alt="Momo" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Momo</p>
+      </div>
+      <div class="text-center">
+        <img src="./photo/family5.jpg" alt="Xiaohei" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Xiaohei</p>
+      </div>
+      <div class="text-center">
+        <img src="./photo/family6.jpg" alt="Xiaohua" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Xiaohua</p>
+      </div>
+      <div class="text-center">
+        <img src="./photo/family7.jpg" alt="Rascal" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Rascal</p>
+      </div>
+    </div>
+  </div>
+    <p class="text-center text-gray-500 text-sm">
+      © <span id="year"></span> Our Family Hub | 夏洛特之家
+    </p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const langBtn = document.getElementById('lang-btn');
+    let isEnglish = true;
+
+    const texts = {
+      en: {
+        title: "Our Family Hub",
+        pageTitle: "💰 Family Finance Overview",
+        pageText: "View your monthly financial summary, updated on the 15th of each month.",
+        nav: ["Home", "Finance", "Baby Growth", "Family Travel", "Plans", "Memories"],
+        lang: "中文"
+      },
+      zh: {
+        title: "夏洛特之家",
+        pageTitle: "小布丁100天啦 🎉",
+        pageText: "我是夏洛特 🎀！我可是个特别的宝宝～7月4日那天，伴着满天烟花💥和热闹的“砰砰”声出生的，所以大家都叫我“小烟花宝宝”✨，还有“自由女士”呢！😆",
+        nav: ["首页", "财务", "宝宝成长", "家庭旅行", "家庭计划", "纪念册"],
+        lang: "EN"
+      }
+    };
+
+    langBtn.addEventListener('click', () => {
+      isEnglish = !isEnglish;
+      const t = isEnglish ? texts.en : texts.zh;
+      document.getElementById('site-title').textContent = t.title;
+      document.getElementById('page-title').textContent = t.pageTitle;
+      document.getElementById('page-text').textContent = t.pageText;
+      const navs = ["nav-home", "nav-finance", "nav-baby", "nav-travel", "nav-plans", "nav-memories"];
+      navs.forEach((id, i) => document.getElementById(id).textContent = t.nav[i]);
+      langBtn.textContent = t.lang;
+    });
+  </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script>
+    // 监听 Modal 显示事件，获取并设置点击的图片
+    const imageModal = document.getElementById('imageModal');
+    imageModal.addEventListener('show.bs.modal', event => {
+      // 获取触发模态框的链接元素
+      const opener = event.relatedTarget; 
+      // 从链接的 data-img-src 属性中获取图片路径
+      const imageSrc = opener.getAttribute('data-img-src');
+      
+      // 找到模态框中的图片元素，并设置其 src 属性
+      const modalImage = imageModal.querySelector('#modalImage');
+      modalImage.src = imageSrc;
+      
+      // 可选：设置标题
+      const modalTitle = imageModal.querySelector('.modal-title');
+      modalTitle.textContent = opener.querySelector('img').alt;
+    });
+  </script>
+</body>
+</html>

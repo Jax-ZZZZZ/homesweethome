@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Travel | Our Family Hub</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #fff8f0;
+      color: #444;
+    }
+
+    .main-color { color: #ff907a; }
+    .accent { background-color: #ffb998; }
+
+    #map {
+      height: 420px; /* ✅ 稍微增加高度 */
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    .travel-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .travel-list li {
+      background: white;
+      padding: 14px 18px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .travel-list li:hover,
+    .travel-list li.active {
+      background-color: #fff1e4;
+      transform: translateY(-2px);
+    }
+
+    /* ✅ 自定义滚动条（更干净的视觉） */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: #ffb998;
+  border-radius: 10px;
+}
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+    .modal-content {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    footer img {
+      object-fit: cover;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+  <!-- 顶部导航栏 -->
+  <header class="bg-white/80 backdrop-blur sticky top-0 z-10 shadow-sm">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center px-6 py-3">
+      <h1 class="text-2xl font-semibold main-color flex items-center gap-2">
+        <i data-lucide="heart" class="w-6 h-6"></i>
+        <a href="../index.html" id="site-title" class="hover:opacity-80 transition">Our Family Hub</a>
+      </h1>
+      <div class="hidden md:flex gap-6 text-gray-700 font-medium">
+        <a href="../index.html" id="nav-home" class="hover:text-orange-500">Home</a>
+        <a href="../finance/family_ledger.html" id="nav-finance" class="hover:text-orange-500">Finance</a>
+        <a href="../babygrowth/babygrowth.html" id="nav-baby" class="hover:text-orange-500">Baby Growth</a>
+        <a href="#" id="nav-travel" class="hover:text-orange-500 font-semibold">Family Travel</a>
+        <a href="../plans/plans.html" id="nav-plans" class="hover:text-orange-500">Plans</a>
+        <a href="../memories/memories.html" id="nav-memories" class="hover:text-orange-500">Memories</a>
+      </div>
+      <button id="lang-btn" class="ml-4 px-3 py-1 rounded-lg accent text-white text-sm hover:opacity-90 transition">中文</button>
+    </nav>
+  </header>
+
+  <!-- 主标题 -->
+  <section class="text-center py-12 px-4 bg-gradient-to-b from-orange-50/70 to-transparent">
+    <h2 id="page-title" class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">✈️ Our Family Travels</h2>
+    <p id="page-text" class="text-gray-600 text-lg max-w-2xl mx-auto">
+      Explore the places we’ve visited as a family — each one holds a special memory!
+    </p>
+  </section>
+
+  <!-- 主内容 -->
+  <section class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6 px-6 pb-10 items-start">
+    <!-- ✅ 左侧地图 -->
+    <div id="map"></div>
+
+    <!-- ✅ 右侧旅行列表 -->
+     
+    <div class="overflow-y-auto max-h-[420px] pr-2">
+    <ul class="travel-list" id="travel-list">
+        <li id="dt" data-destination="Dayton" data-date="2020-08"
+            data-photos="travelphoto/Dayton/1.jpg,travelphoto/Dayton/2.jpg,travelphoto/Dayton/3.jpg,travelphoto/Dayton/4.jpg,travelphoto/Dayton/5.jpg,travelphoto/Dayton/6.jpg,travelphoto/Dayton/7.jpg,travelphoto/Dayton/8.jpg,travelphoto/Dayton/9.jpg,travelphoto/Dayton/10.jpg,travelphoto/Dayton/11.jpg,travelphoto/Dayton/12.jpg,travelphoto/Dayton/13.jpg,travelphoto/Dayton/14.jpg,travelphoto/Dayton/15.jpg,travelphoto/Dayton/16.jpg,travelphoto/Dayton/17.jpg,travelphoto/Dayton/18.jpg,travelphoto/Dayton/19.jpg,travelphoto/Dayton/20.jpg,travelphoto/Dayton/21.jpg,travelphoto/Dayton/22.jpg,travelphoto/Dayton/23.jpg,travelphoto/Dayton/24.jpg,travelphoto/Dayton/25.jpg,travelphoto/Dayton/26.jpg">
+            💍 Dayton — August 2020
+        </li>
+        <li id="mk" data-destination="Mackinac Island" data-date="2021-05"
+            data-photos="travelphoto/MackinacIsland/1.jpg,travelphoto/MackinacIsland/2.jpg,travelphoto/MackinacIsland/3.jpg, travelphoto/MackinacIsland/4.jpg,travelphoto/MackinacIsland/5.jpg,travelphoto/MackinacIsland/6.jpg,travelphoto/MackinacIsland/7.jpg,travelphoto/MackinacIsland/8.jpg,travelphoto/MackinacIsland/9.jpg,travelphoto/MackinacIsland/10.jpg">
+            🏝️ Mackinac Island — May 2021
+        </li>
+        <li id="chi" data-destination="Chicago" data-date="2021-08"
+            data-photos="travelphoto/Chicago/1.jpg,travelphoto/Chicago/2.jpg,travelphoto/Chicago/3.jpg,travelphoto/Chicago/4.jpg,travelphoto/Chicago/5.jpg,travelphoto/Chicago/6.jpg">
+            🌆 Chicago — August 2021
+        </li>
+        <li id="sm" data-destination="Smoky Mountains" data-date="2021-10"
+            data-photos="travelphoto/SmokyMountains/1.jpg,travelphoto/SmokyMountains/2.jpg,travelphoto/SmokyMountains/3.jpg,travelphoto/SmokyMountains/4.jpg,travelphoto/SmokyMountains/5.jpg,travelphoto/SmokyMountains/6.jpg">
+            🐻 Smoky Mountains — October 2021
+        </li>
+        <li id="fl" data-destination="Florida" data-date="2021-12"
+            data-photos="travelphoto/Florida/1.jpg,travelphoto/Florida/2.jpg,travelphoto/Florida/3.jpg,travelphoto/Florida/4.jpg,travelphoto/Florida/5.jpg,travelphoto/Florida/6.jpg,travelphoto/Florida/7.jpg,travelphoto/Florida/8.jpg,travelphoto/Florida/9.jpg">
+            🏖️ Florida — December 2021
+        </li>
+        <li id="pb" data-destination="Put in Bay" data-date="2022-07"
+            data-photos="travelphoto/Put in Bay/1.jpg,travelphoto/Put in Bay/2.jpg,travelphoto/Put in Bay/3.jpg,travelphoto/Put in Bay/4.jpg,travelphoto/Put in Bay/5.jpg,travelphoto/Put in Bay/6.jpg,travelphoto/Put in Bay/7.jpg">
+            🚤 Put in Bay — July 2022
+        </li>
+        <li id="ny" data-destination="New York" data-date="2022-11"
+            data-photos="travelphoto/New York/1.jpg,travelphoto/New York/2.jpg,travelphoto/New York/3.jpg,travelphoto/New York/4.jpg,travelphoto/New York/5.jpg,travelphoto/New York/6.jpg,travelphoto/New York/7.jpg,travelphoto/New York/8.jpg,travelphoto/New York/9.jpg,travelphoto/New York/10.jpg,travelphoto/New York/11.jpg">
+            🗽 New York — November 2022
+        </li>
+        <li id="bs" data-destination="Boston" data-date="2022-11"
+            data-photos="travelphoto/Boston/1.jpg,travelphoto/Boston/2.jpg,travelphoto/Boston/3.jpg,travelphoto/Boston/4.jpg,travelphoto/Boston/5.jpg,travelphoto/Boston/6.jpg,travelphoto/Boston/7.jpg, travelphoto/Boston/8.jpg">
+            💒 Boston — November 2022
+        </li>
+        <li id="sa" data-destination="San Antonio" data-date="2023-09"
+            data-photos="travelphoto/San Antonio/1.jpg,travelphoto/San Antonio/2.jpg,travelphoto/San Antonio/3.jpg,travelphoto/San Antonio/4.jpg,travelphoto/San Antonio/5.jpg,travelphoto/San Antonio/6.jpg,travelphoto/San Antonio/7.jpg,travelphoto/San Antonio/8.jpg,travelphoto/San Antonio/9.jpg,travelphoto/San Antonio/10.jpg,travelphoto/San Antonio/11.jpg">
+            🌵 San Antonio — September 2023 & 2025
+        </li>
+        <li id="nm" data-destination="New Mexico" data-date="2023-11"
+            data-photos="travelphoto/New Mexico/1.jpg,travelphoto/New Mexico/2.jpg,travelphoto/New Mexico/3.jpg,travelphoto/New Mexico/4.jpg,travelphoto/New Mexico/5.jpg,travelphoto/New Mexico/6.jpg,travelphoto/New Mexico/7.jpg,travelphoto/New Mexico/8.jpg,travelphoto/New Mexico/9.jpg,travelphoto/New Mexico/10.jpg">
+            🏜️ New Mexico — November 2023
+        </li>
+        <li id="hb" data-destination="Hebei" data-date="2024-02"
+            data-photos="travelphoto/Hebei/1.jpg,travelphoto/Hebei/2.jpg,travelphoto/Hebei/3.jpg,travelphoto/Hebei/4.jpg,travelphoto/Hebei/5.jpg,travelphoto/Hebei/6.jpg,travelphoto/Hebei/7.jpg,travelphoto/Hebei/8.jpg,travelphoto/Hebei/9.jpg, travelphoto/Hebei/10.jpg,travelphoto/Hebei/11.jpg,travelphoto/Hebei/12.jpg">
+            🏯 Hebei — February 2024
+        </li>
+        <li id="hn" data-destination="Hunan" data-date="2024-02"
+            data-photos="travelphoto/Hunan/1.jpg,travelphoto/Hunan/2.jpg,travelphoto/Hunan/3.jpg,travelphoto/Hunan/4.jpg,travelphoto/Hunan/5.jpg,travelphoto/Hunan/6.jpg,travelphoto/Hunan/7.jpg,travelphoto/Hunan/8.jpg,travelphoto/Hunan/9.jpg,travelphoto/Hunan/10.jpg">
+            🌄 Hunan — February 2024
+        </li>
+        <li id="cc" data-destination="Corpus Christi" data-date="2024-05"
+            data-photos="travelphoto/Corpus Christi/1.jpg,travelphoto/Corpus Christi/2.jpg,travelphoto/Corpus Christi/3.jpg,travelphoto/Corpus Christi/4.jpg,travelphoto/Corpus Christi/5.jpg,travelphoto/Corpus Christi/6.jpg,travelphoto/Corpus Christi/7.jpg,travelphoto/Corpus Christi/8.jpg">
+            🌊 Corpus Christi — May 2024
+        </li>
+        <li id="tg" data-destination="Tennessee Georgia" data-date="2024-08"
+            data-photos="travelphoto/Tennessee Georgia/1.jpg,travelphoto/Tennessee Georgia/2.jpg,travelphoto/Tennessee Georgia/3.jpg,travelphoto/Tennessee Georgia/4.jpg,travelphoto/Tennessee Georgia/5.jpg,travelphoto/Tennessee Georgia/6.jpg,travelphoto/Tennessee Georgia/7.jpg,travelphoto/Tennessee Georgia/8.jpg,travelphoto/Tennessee Georgia/9.jpg,travelphoto/Tennessee Georgia/10.jpg">
+            🏠 Tennessee Georgia — August 2024
+        </li>
+        <li id="co" data-destination="Colorado" data-date="2024-10"
+            data-photos="travelphoto/Colorado/1.jpg,travelphoto/Colorado/2.jpg,travelphoto/Colorado/3.jpg,travelphoto/Colorado/4.jpg,travelphoto/Colorado/5.jpg,travelphoto/Colorado/6.jpg,travelphoto/Colorado/7.jpg,travelphoto/Colorado/8.jpg,travelphoto/Colorado/9.jpg,travelphoto/Colorado/10.jpg,travelphoto/Colorado/11.jpg,travelphoto/Colorado/12.jpg">
+            🏔️ Colorado — October 2024
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 相册 Modal -->
+  <div class="modal fade" id="albumModal" tabindex="-1" aria-labelledby="albumModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-orange-50 border-0">
+          <h5 class="modal-title text-gray-700" id="albumModalLabel">Travel Photos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div id="carouselAlbum" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="carousel-inner"></div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselAlbum" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselAlbum" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+<footer class="bg-white/80 py-6 border-t">
+  <div class="max-w-6xl mx-auto px-4 mb-6">
+    <h3 class="text-center text-xl font-semibold mb-4">👨‍👩‍👧‍👦 Who We Are?</h3>
+
+    <!-- 响应式图片网格 -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 justify-items-center">
+      <div class="text-center">
+        <img src="../photo/apple.jpg" alt="Mom" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Mom</p>
+      </div>
+      <div class="text-center">
+        <img src="../photo/jax.jpg" alt="Dad" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Dad</p>
+      </div>
+      <div class="text-center">
+        <img src="../photo/charlotte.jpg" alt="Charlotte" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Charlotte</p>
+      </div>
+      <div class="text-center">
+        <img src="../photo/momo.jpg" alt="Momo" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Momo</p>
+      </div>
+      <div class="text-center">
+        <img src="../photo/xiaohei.jpg" alt="Xiaohei" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Xiaohei</p>
+      </div>
+      <div class="text-center">
+        <img src="../photo/xiaohua.jpg" alt="Xiaohua" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Xiaohua</p>
+      </div>
+      <div class="text-center">
+        <img src="../photo/rascal.jpg" alt="Rascal" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Rascal</p>
+      </div>
+    </div>
+  </div>
+    <p class="text-center text-gray-500 text-sm">
+      © <span id="year"></span> Our Family Hub | 夏洛特之家
+    </p>
+  </footer>
+
+<script>
+  lucide.createIcons();
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ✅ Google Maps 初始化
+  let map;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 39.8283, lng: -98.5795 }, // 🇺🇸 美国地理中心
+        zoom: 2.5, // 缩放级别：4大致能看到整个北美洲
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: false
+    });
+
+    const locations = [
+        {
+            name: "Dayton",
+            position: { lat: 39.7589, lng: -84.1916 },
+            photos: ["travelphoto/Dayton/1.jpg", "travelphoto/Dayton/2.jpg", "travelphoto/Dayton/3.jpg", "travelphoto/Dayton/4.jpg", "travelphoto/Dayton/5.jpg", "travelphoto/Dayton/6.jpg", "travelphoto/Dayton/7.jpg", "travelphoto/Dayton/8.jpg", "travelphoto/Dayton/9.jpg", "travelphoto/Dayton/10.jpg", "travelphoto/Dayton/11.jpg", "travelphoto/Dayton/12.jpg", "travelphoto/Dayton/13.jpg", "travelphoto/Dayton/14.jpg", "travelphoto/Dayton/15.jpg", "travelphoto/Dayton/16.jpg", "travelphoto/Dayton/17.jpg", "travelphoto/Dayton/18.jpg", "travelphoto/Dayton/19.jpg", "travelphoto/Dayton/20.jpg", "travelphoto/Dayton/21.jpg", "travelphoto/Dayton/22.jpg", "travelphoto/Dayton/23.jpg", "travelphoto/Dayton/24.jpg", "travelphoto/Dayton/25.jpg,", "travelphoto/Dayton/26.jpg"],
+            date: "2020-08"
+        },
+      {
+        name: "Mackinac Island",
+        position: { lat: 45.8497, lng: -84.6296 },
+        photos: ["travelphoto/MackinacIsland/1.jpg", "travelphoto/MackinacIsland/2.jpg", "travelphoto/MackinacIsland/3.jpg", "travelphoto/MackinacIsland/4.jpg", "travelphoto/MackinacIsland/5.jpg", "travelphoto/MackinacIsland/6.jpg", "travelphoto/MackinacIsland/7.jpg", "travelphoto/MackinacIsland/8.jpg", "travelphoto/MackinacIsland/9.jpg", "travelphoto/MackinacIsland/10.jpg"],
+        date: "2021-05"
+      },
+      {
+        name: "Chicago",
+        position: { lat: 41.8781, lng: -87.6298 },
+        photos: ["travelphoto/Chicago/1.jpg", "travelphoto/Chicago/2.jpg", "travelphoto/Chicago/3.jpg", "travelphoto/Chicago/4.jpg", "travelphoto/Chicago/5.jpg", "travelphoto/Chicago/6.jpg"],
+        date: "2021-08"
+      },
+        {
+            name: "Smoky Mountains",
+            position: { lat: 35.6118, lng: -83.4895 },
+            photos: ["travelphoto/SmokyMountains/1.jpg", "travelphoto/SmokyMountains/2.jpg", "travelphoto/SmokyMountains/3.jpg", "travelphoto/SmokyMountains/4.jpg", "travelphoto/SmokyMountains/5.jpg", "travelphoto/SmokyMountains/6.jpg"],
+            date: "2021-10"
+        },
+      {
+        name: "Florida",
+        position: { lat: 27.994402, lng: -81.760254 },
+        photos: ["travelphoto/Florida/1.jpg", "travelphoto/Florida/2.jpg", "travelphoto/Florida/3.jpg", "travelphoto/Florida/4.jpg", "travelphoto/Florida/5.jpg", "travelphoto/Florida/6.jpg", "travelphoto/Florida/7.jpg", "travelphoto/Florida/8.jpg", "travelphoto/Florida/9.jpg"],
+        date: "2021-12"
+      },
+      {
+        name: "Put in Bay",
+        position: { lat: 41.65462672885919, lng: -82.81947726715244 },
+        photos: ["travelphoto/Put in Bay/1.jpg", "travelphoto/Put in Bay/2.jpg", "travelphoto/Put in Bay/3.jpg", "travelphoto/Put in Bay/4.jpg", "travelphoto/Put in Bay/5.jpg", "travelphoto/Put in Bay/6.jpg", "travelphoto/Put in Bay/7.jpg"],
+        date: "2022-07"
+      },
+      {
+        name: "New York",
+        position: { lat: 40.7128, lng: -74.0060 },
+        photos: ["travelphoto/New York/1.jpg", "travelphoto/New York/2.jpg", "travelphoto/New York/3.jpg", "travelphoto/New York/4.jpg", "travelphoto/New York/5.jpg", "travelphoto/New York/6.jpg", "travelphoto/New York/7.jpg", "travelphoto/New York/8.jpg", "travelphoto/New York/9.jpg", "travelphoto/New York/10.jpg", "travelphoto/New York/11.jpg"],
+        date: "2022-11"
+      },
+        {
+            name: "Boston",
+            position: { lat: 42.3601, lng: -71.0589 },
+            photos: ["travelphoto/Boston/1.jpg", "travelphoto/Boston/2.jpg", "travelphoto/Boston/3.jpg", "travelphoto/Boston/4.jpg", "travelphoto/Boston/5.jpg", "travelphoto/Boston/6.jpg", "travelphoto/Boston/7.jpg", "travelphoto/Boston/8.jpg"],
+            date: "2022-11"
+        },
+        {
+        name: "San Antonio",
+        position: { lat: 29.4241, lng: -98.4936 },
+        photos: ["travelphoto/San Antonio/1.jpg", "travelphoto/San Antonio/2.jpg", "travelphoto/San Antonio/3.jpg", "travelphoto/San Antonio/4.jpg", "travelphoto/San Antonio/5.jpg", "travelphoto/San Antonio/6.jpg", "travelphoto/San Antonio/7.jpg", "travelphoto/San Antonio/8.jpg", "travelphoto/San Antonio/9.jpg", "travelphoto/San Antonio/10.jpg", "travelphoto/San Antonio/11.jpg"],
+        date: "2023-09"
+        },
+        {
+        name: "New Mexico",
+        position: { lat: 34.5199, lng: -105.8701 },
+        photos: ["travelphoto/New Mexico/1.jpg", "travelphoto/New Mexico/2.jpg", "travelphoto/New Mexico/3.jpg", "travelphoto/New Mexico/4.jpg", "travelphoto/New Mexico/5.jpg", "travelphoto/New Mexico/6.jpg", "travelphoto/New Mexico/7.jpg", "travelphoto/New Mexico/8.jpg", "travelphoto/New Mexico/9.jpg", "travelphoto/New Mexico/10.jpg"],
+        date: "2023-11"
+        },
+        {
+        name: "Hebei",
+        position: { lat: 38.0428, lng: 114.5149 },
+        photos: ["travelphoto/Hebei/1.jpg", "travelphoto/Hebei/2.jpg", "travelphoto/Hebei/3.jpg", "travelphoto/Hebei/4.jpg", "travelphoto/Hebei/5.jpg", "travelphoto/Hebei/6.jpg", "travelphoto/Hebei/7.jpg", "travelphoto/Hebei/8.jpg", "travelphoto/Hebei/9.jpg", "travelphoto/Hebei/10.jpg", "travelphoto/Hebei/11.jpg", "travelphoto/Hebei/12.jpg"],
+        date: "2024-02"
+        },
+        {
+        name: "Hunan",
+        position: { lat: 27.6104, lng: 111.7088 },
+        photos: ["travelphoto/Hunan/1.jpg", "travelphoto/Hunan/2.jpg", "travelphoto/Hunan/3.jpg", "travelphoto/Hunan/4.jpg", "travelphoto/Hunan/5.jpg", "travelphoto/Hunan/6.jpg", "travelphoto/Hunan/7.jpg", "travelphoto/Hunan/8.jpg", "travelphoto/Hunan/9.jpg", "travelphoto/Hunan/10.jpg"],
+        date: "2024-02"
+        },
+        {
+        name: "Corpus Christi",
+        position: { lat: 27.8006, lng: -97.3964 },
+        photos: ["travelphoto/Corpus Christi/1.jpg", "travelphoto/Corpus Christi/2.jpg", "travelphoto/Corpus Christi/3.jpg", "travelphoto/Corpus Christi/4.jpg", "travelphoto/Corpus Christi/5.jpg", "travelphoto/Corpus Christi/6.jpg", "travelphoto/Corpus Christi/7.jpg", "travelphoto/Corpus Christi/8.jpg"],
+        date: "2024-05"
+        },
+        {
+        name: "Tennessee Georgia",
+        position: { lat: 34.97324, lng: -85.3502 },
+        photos: ["travelphoto/Tennessee Georgia/1.jpg", "travelphoto/Tennessee Georgia/2.jpg", "travelphoto/Tennessee Georgia/3.jpg", "travelphoto/Tennessee Georgia/4.jpg", "travelphoto/Tennessee Georgia/5.jpg", "travelphoto/Tennessee Georgia/6.jpg", "travelphoto/Tennessee Georgia/7.jpg", "travelphoto/Tennessee Georgia/8.jpg", "travelphoto/Tennessee Georgia/9.jpg", "travelphoto/Tennessee Georgia/10.jpg"],
+        date: "2024-08"
+        },
+        {
+        name: "Colorado",
+        position: { lat: 39.5501, lng: -105.7821 },
+        photos: ["travelphoto/Colorado/1.jpg", "travelphoto/Colorado/2.jpg", "travelphoto/Colorado/3.jpg", "travelphoto/Colorado/4.jpg", "travelphoto/Colorado/5.jpg", "travelphoto/Colorado/6.jpg", "travelphoto/Colorado/7.jpg", "travelphoto/Colorado/8.jpg", "travelphoto/Colorado/9.jpg", "travelphoto/Colorado/10.jpg", "travelphoto/Colorado/11.jpg", "travelphoto/Colorado/12.jpg"],
+        date: "2024-10"
+        }
+    ];
+
+    const starIcon = {
+      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/32px-Five-pointed_star.svg.png",
+      scaledSize: new google.maps.Size(32, 32)
+    };
+
+    // ✅ 地图标记 + 点击打开相册
+    locations.forEach(loc => {
+      const marker = new google.maps.Marker({
+        position: loc.position,
+        map,
+        title: loc.name,
+        icon: starIcon
+      });
+
+      marker.addListener("click", () => {
+        openAlbum(loc.name, loc.photos);
+      });
+    });
+  }
+
+  // ✅ 打开相册函数（列表与地图共用）
+  function openAlbum(destination, photos) {
+    const container = document.getElementById('carousel-inner');
+    container.innerHTML = photos.map((p, i) => `
+      <div class="carousel-item ${i === 0 ? 'active' : ''}">
+        <img src="${p.trim()}" class="d-block w-100 rounded" alt="photo ${i + 1}">
+      </div>
+    `).join('');
+    document.getElementById('albumModalLabel').textContent = destination;
+    const modal = new bootstrap.Modal(document.getElementById('albumModal'));
+    modal.show();
+  }
+
+  // ✅ 列表点击事件
+  document.querySelectorAll('.travel-list li').forEach(item => {
+    item.addEventListener('click', () => {
+      const photos = item.getAttribute('data-photos').split(',');
+      const destination = item.getAttribute('data-destination');
+      openAlbum(destination, photos);
+    });
+  });
+
+  // ✅ 中英文切换
+  const langBtn = document.getElementById('lang-btn');
+  let isEnglish = true;
+  const texts = {
+    en: {
+      title: "Our Family Hub",
+      pageTitle: "✈️ Our Family Travels",
+      pageText: "Explore the places we’ve visited as a family — each one holds a special memory!",
+      nav: ["Home", "Finance", "Baby Growth", "Family Travel", "Plans", "Memories"],
+      lang: "中文"
+    },
+    zh: {
+      title: "夏洛特之家",
+      pageTitle: "✈️ 我们的家庭旅行",
+      pageText: "看看我们一起去过的地方吧～每一个足迹都有特别的回忆✨",
+      nav: ["首页", "财务", "宝宝成长", "家庭旅行", "家庭计划", "纪念册"],
+      lang: "EN"
+    }
+  };
+
+  langBtn.addEventListener('click', () => {
+    isEnglish = !isEnglish;
+    const t = isEnglish ? texts.en : texts.zh;
+    document.getElementById('site-title').textContent = t.title;
+    document.getElementById('page-title').textContent = t.pageTitle;
+    document.getElementById('page-text').textContent = t.pageText;
+    const navs = ["nav-home", "nav-finance", "nav-baby", "nav-travel", "nav-plans", "nav-memories"];
+    navs.forEach((id, i) => document.getElementById(id).textContent = t.nav[i]);
+    langBtn.textContent = t.lang;
+  });
+</script>
+
+  <!-- ✅ Google Maps API Key -->
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAROm8YLR5glL69vRKnvwY9LwMZiUcUAv4&callback=initMap">
+  </script>
+</body>
+</html>
