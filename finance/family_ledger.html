@@ -46,10 +46,10 @@
       <div class="hidden md:flex gap-6 text-gray-700 font-medium">
         <a href="../index.html" id="nav-home" class="hover:text-orange-500">Home</a>
         <a href="#" id="nav-finance" class="hover:text-orange-500 font-semibold">Finance</a>
-        <a href="../babygrowth/100_day_celebration.html" id="nav-baby" class="hover:text-orange-500">Baby Growth</a>
+        <a href="../babygrowth/babygrowth.html" id="nav-baby" class="hover:text-orange-500">Baby Growth</a>
         <a href="../familytravel/familytravel.html" id="nav-travel" class="hover:text-orange-500">Family Travel</a>
-        <a href="../plans.html" id="nav-plans" class="hover:text-orange-500">Plans</a>
-        <a href="../memories.html" id="nav-memories" class="hover:text-orange-500">Memories</a>
+        <a href="../plans/plans.html" id="nav-plans" class="hover:text-orange-500">Plans</a>
+        <a href="../memories/memories.html" id="nav-memories" class="hover:text-orange-500">Memories</a>
       </div>
       <button id="lang-btn" class="ml-4 px-3 py-1 rounded-lg accent text-white text-sm hover:opacity-90 transition">
         中文
@@ -76,17 +76,42 @@
   </main>
 
   <!-- 页脚 + 轮播图 -->
-  <footer class="bg-white/80 py-6 border-t">
-    <div id="carouselExampleIndicators" class="carousel slide max-w-4xl mx-auto mb-6" data-bs-ride="carousel">
-      <div class="carousel-inner rounded-2xl shadow">
-        <div class="carousel-item active">
-          <img src="https://picsum.photos/800/300?finance1" class="d-block w-100" alt="Finance 1">
-        </div>
-        <div class="carousel-item">
-          <img src="https://picsum.photos/800/300?finance2" class="d-block w-100" alt="Finance 2">
-        </div>
+<footer class="bg-white/80 py-6 border-t">
+  <div class="max-w-6xl mx-auto px-4 mb-6">
+    <h3 class="text-center text-xl font-semibold mb-4">👨‍👩‍👧‍👦 Who We Are?</h3>
+
+    <!-- 响应式图片网格 -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 justify-items-center">
+      <div class="text-center">
+        <img src="../photo/apple.jpg" alt="Mom" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Mom</p>
+      </div>
+      <div class="text-center">
+        <img src="../photo/jax.jpg" alt="Dad" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Dad</p>
+      </div>
+      <div class="text-center">
+        <img src="../photo/charlotte.jpg" alt="Charlotte" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Charlotte</p>
+      </div>
+      <div class="text-center">
+        <img src="../photo/momo.jpg" alt="Momo" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Momo</p>
+      </div>
+      <div class="text-center">
+        <img src="../photo/xiaohei.jpg" alt="Xiaohei" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Xiaohei</p>
+      </div>
+      <div class="text-center">
+        <img src="../photo/xiaohua.jpg" alt="Xiaohua" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Xiaohua</p>
+      </div>
+      <div class="text-center">
+        <img src="../photo/rascal.jpg" alt="Rascal" class="w-40 h-28 rounded-xl shadow-md object-cover">
+        <p class="mt-1 text-sm text-gray-600">Rascal</p>
       </div>
     </div>
+  </div>
     <p class="text-center text-gray-500 text-sm">
       © <span id="year"></span> Our Family Hub | 夏洛特之家
     </p>
